@@ -6,19 +6,17 @@ import java.util.Scanner;
 
 public class FileReader {
   public static void main(String[] args) {
+    // reads data from file and creates an array, array is then looped through and customer profiles created 
+
     ArrayList<Object> customerDataArray = new ArrayList<Object>();
 
     try {
-      File customerDataArrayFile = new File("customers.txt");
-
-      Scanner customerScanner = new Scanner(customerDataArrayFile);
+      File customerImportFile = new File("customers.txt");
+      Scanner customerScanner = new Scanner(customerImportFile);
 
       while (customerScanner.hasNextLine()) {
         String arrayValue = customerScanner.next();
         customerDataArray.add(arrayValue);
-        
-        System.out.println(customerDataArray);
-         
       }
       customerScanner.close();
     } 
