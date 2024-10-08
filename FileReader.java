@@ -12,24 +12,20 @@ public class FileReader {
 
     try {
       File customerImportFile = new File("customers.txt");
-      Scanner customerScanner = new Scanner(customerImportFile);
+      Scanner sc = new Scanner(customerImportFile);
 
-      while (customerScanner.hasNextLine()) {
-        String arrayValue = customerScanner.next();
+      while (sc.hasNextLine()) {
+        String arrayValue = sc.next();
         customerDataArray.add(arrayValue);
       }
 
-
       System.out.println(customerDataArray);
-      customerScanner.close();
-
+      sc.close();
 
       MapCustomerData mapCustomerData = new MapCustomerData();
       mapCustomerData.mapArray(customerDataArray);
-      mapCustomerData.printCustomerInfo();
-    }
 
-    catch (FileNotFoundException e) {
+    } catch (FileNotFoundException e) {
       System.out.println("An error occurred.");
       e.printStackTrace();
     }
