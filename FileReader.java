@@ -3,10 +3,10 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class FileReader {
   public static void main(String[] args) {
-    // reads data from file and creates an array, array is then looped through and customer profiles created 
+    // reads data from file and creates an array, array is then looped through and
+    // customer profiles created
 
     ArrayList<Object> customerDataArray = new ArrayList<Object>();
 
@@ -18,12 +18,20 @@ public class FileReader {
         String arrayValue = customerScanner.next();
         customerDataArray.add(arrayValue);
       }
+
+
+      System.out.println(customerDataArray);
       customerScanner.close();
-    } 
-    
+
+
+      MapCustomerData mapCustomerData = new MapCustomerData();
+      mapCustomerData.mapArray(customerDataArray);
+      mapCustomerData.printCustomerInfo();
+    }
+
     catch (FileNotFoundException e) {
       System.out.println("An error occurred.");
       e.printStackTrace();
     }
   }
-    }
+}
