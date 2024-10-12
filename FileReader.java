@@ -6,9 +6,10 @@ import java.util.Scanner;
 public class FileReader {
   public static void main(String[] args) {
     // reads data from file and creates an array, array is then looped through and
-    // customer profiles created
+    // customer profiles created, profiles are then inserted into hashmap with format - {UID:customerProfile}
 
     ArrayList<Object> customerDataArray = new ArrayList<Object>();
+
 
     try {
       File customerImportFile = new File("customers.txt");
@@ -19,14 +20,14 @@ public class FileReader {
         customerDataArray.add(arrayValue);
       }
 
-      System.out.println(customerDataArray);
       sc.close();
 
       MapCustomerData mapCustomerData = new MapCustomerData();
       mapCustomerData.mapArray(customerDataArray);
+      mapCustomerData.printDatabase(mapCustomerData.getCustomerDatabase());
 
     } catch (FileNotFoundException e) {
-      System.out.println("An error occurred.");
+      System.out.println("File does not exist.");
       e.printStackTrace();
     }
   }

@@ -1,9 +1,10 @@
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class MapCustomerData {
-    // creates a hashmap for each customer and assigns customer data as key value pairs into main data structure
+    // creates a hashmap for each customer and assigns customer data as key value pairs into database
 
     private HashMap<String, String> customerInfo = new HashMap<>();
     private HashMap<Integer, HashMap<String, String>> customerDatabase = new HashMap<>();
@@ -15,7 +16,7 @@ public class MapCustomerData {
     }
 
     public void addCustomer(
-        // creates new customer hashmap and inserts into second data structure
+        // creates new customer and inserts into main database
 
             int customerID,
             String firstName,
@@ -43,7 +44,7 @@ public class MapCustomerData {
     }
 
     public void mapArray(ArrayList<Object> dataArray) {
-        // maps the arrayList output from the Scanner class 
+        // maps the arrayList output from the Scanner class  
 
         int counter = 0;
         int customerID = 0;
@@ -58,11 +59,19 @@ public class MapCustomerData {
             addCustomer(customerID, firstName, surname, totalPurchase, lastPurchase, customerClass);
 
             counter += 5;
-            customerID += 1;
+            customerID ++;
         }
     }
 
-    public void printDatabase() {
-        System.out.println(customerDatabase);
+    public Map<Integer, HashMap<String, String>> getCustomerDatabase() {
+        // returns the customer database for use in Main
+        return customerDatabase;
+    }
+    
+    public void printDatabase(Map<Integer, HashMap<String, String>> database) {
+        // prints each customer record on new lines 
+        database.forEach((key, value) -> {
+            System.out.println("Key=" + key + ", Value=" + value);
+        });
     }
 }
