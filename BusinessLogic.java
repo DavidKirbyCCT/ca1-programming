@@ -63,12 +63,17 @@ public class BusinessLogic {
     };
 
     public static void outputFinalCustomerPurchase(Map<Integer, HashMap<String, String>> database) {
+        // outputs full customer name and final purchase price including discount, formatted to 2 decimal places
+
         database.forEach((key, value) -> {
             String fullName = value.get("fullName");
             double purchase = calculateFinalValue(
                 value.get("customerClass"), 
                 value.get("lastPurchase"), 
                 value.get("totalPurchase"));
+
+                System.out.println("Customer Name: " + fullName );
+                System.out.printf("Final Purchase: %.2f\n", purchase);
         });
     }
 }

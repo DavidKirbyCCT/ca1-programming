@@ -26,6 +26,9 @@ public class FileReader {
       mapCustomerData.mapArray(customerDataArray);
       mapCustomerData.printDatabase(mapCustomerData.getCustomerDatabase());
 
+      BusinessLogic.outputFinalCustomerPurchase(mapCustomerData.getCustomerDatabase());
+
+
     } catch (FileNotFoundException e) {
       System.out.println("File does not exist.");
       e.printStackTrace();

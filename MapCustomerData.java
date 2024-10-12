@@ -68,8 +68,8 @@ public class MapCustomerData {
         return customerDatabase;
     }
     
-    public void printDatabase(HashMap<Integer, HashMap<String, String>> database) {
-        // prints each customer record on new lines 
+    public void printDatabase(Map<Integer, HashMap<String, String>> database) {
+        // prints each customer record on new line
         database.forEach((key, value) -> {
             System.out.println("Customer ID: " + key + ", Customer Data:" + value);
         });
