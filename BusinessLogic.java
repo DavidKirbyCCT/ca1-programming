@@ -1,51 +1,59 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class BusinessLogic {
     // calculates the final price price for the customer with their discount
 
     public static double calculateFinalValue(
-            int customerClass,
-            int lastPurchase,
-            double totalPurchase) {
+            String customerClass,
+            String lastPurchase,
+            String totalPurchase) {
 
         double finalValue = 0;
         int thisYear = 2024;
 
-        if (customerClass == 1) {
+        int convertedClass = Integer.parseInt(customerClass);
+        int convertedLastPurchase = Integer.parseInt(lastPurchase);
+        double convertedTotalPurchase = Double.parseDouble(totalPurchase);
 
-            if (lastPurchase == thisYear) {
-                finalValue = totalPurchase * 0.7;
+
+        if (convertedClass == 1) {
+
+            if (convertedLastPurchase == thisYear) {
+                finalValue = convertedTotalPurchase * 0.7;
             }
 
-            else if (lastPurchase < thisYear && lastPurchase > (thisYear - 5)) {
-                finalValue = totalPurchase * 0.8;
+            else if (convertedLastPurchase < thisYear && convertedLastPurchase > (thisYear - 5)) {
+                finalValue = convertedTotalPurchase * 0.8;
             }
 
             else {
-                finalValue = totalPurchase * 0.9;
+                finalValue = convertedTotalPurchase * 0.9;
             }
         }
 
-        else if (customerClass == 2) {
+        else if (convertedClass == 2) {
 
-            if (lastPurchase == thisYear) {
-                finalValue = totalPurchase * 0.85;
+            if (convertedLastPurchase == thisYear) {
+                finalValue = convertedTotalPurchase * 0.85;
             }
 
-            else if (lastPurchase < thisYear && lastPurchase > (thisYear - 5)) {
-                finalValue = totalPurchase * 0.87;
+            else if (convertedLastPurchase < thisYear && convertedLastPurchase > (thisYear - 5)) {
+                finalValue = convertedTotalPurchase * 0.87;
             }
 
             else {
-                finalValue = totalPurchase * 0.95;
+                finalValue = convertedTotalPurchase * 0.95;
             }
         }
 
         else {
 
-            if (lastPurchase == thisYear) {
-                finalValue = totalPurchase * 0.97;
+            if (convertedLastPurchase == thisYear) {
+                finalValue = convertedTotalPurchase * 0.97;
             }
             else {
-                finalValue = totalPurchase;
+                finalValue = convertedTotalPurchase;
             }
 
         }
@@ -53,4 +61,14 @@ public class BusinessLogic {
         return finalValue;
 
     };
+
+    public static void outputFinalCustomerPurchase(Map<Integer, HashMap<String, String>> database) {
+        database.forEach((key, value) -> {
+            String fullName = value.get("fullName");
+            double purchase = calculateFinalValue(
+                value.get("customerClass"), 
+                value.get("lastPurchase"), 
+                value.get("totalPurchase"));
+        });
+    }
 }
