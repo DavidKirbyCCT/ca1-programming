@@ -44,6 +44,9 @@ public class BusinessLogic {
             if (lastPurchase == thisYear) {
                 finalValue = totalPurchase * 0.97;
             }
+            else {
+                finalValue = totalPurchase;
+            }
 
         }
 
