@@ -49,7 +49,6 @@ public class MapCustomerData {
 
     public void addCustomer(
             // creates new customer and inserts into main database if data is validated
-
             int customerID,
             String firstName,
             String surname,

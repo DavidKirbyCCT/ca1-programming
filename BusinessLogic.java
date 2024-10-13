@@ -14,7 +14,7 @@ public class BusinessLogic {
         int thisYear = 2024;
 
         // cast to types needed for expressions/calcs
-        
+
         int convertedClass = Integer.parseInt(customerClass);
         int convertedLastPurchase = Integer.parseInt(lastPurchase);
         double convertedTotalPurchase = Double.parseDouble(totalPurchase);
@@ -63,9 +63,11 @@ public class BusinessLogic {
 
     };
 
-    public static void outputFinalCustomerPurchase(Map<Integer, HashMap<String, String>> database) {
+    public static String outputFinalCustomerPurchase(Map<Integer, HashMap<String, String>> database) {
         // outputs full customer name and final purchase price including discount,
         // formatted to 2 decimal places
+
+        StringBuilder dataForExport = new StringBuilder();
 
         database.forEach((key, value) -> {
             String fullName = value.get("fullName");
@@ -74,8 +76,8 @@ public class BusinessLogic {
                     value.get("lastPurchase"),
                     value.get("totalPurchase"));
 
-            System.out.println("Customer Name: " + fullName);
-            System.out.printf("Final Purchase: %.2f\n", purchase);
+            dataForExport.append(String.format("Customer Name: %s\nFinal Purchase: %.2f\n", fullName, purchase));
         });
+        return dataForExport.toString();
     }
 }
