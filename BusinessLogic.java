@@ -25,7 +25,7 @@ public class BusinessLogic {
                 finalValue = convertedTotalPurchase * 0.7; // 30% discount
             }
 
-            else if (convertedLastPurchase < thisYear && convertedLastPurchase > (thisYear - 5)) {
+            else if (convertedLastPurchase < thisYear && convertedLastPurchase >= (thisYear - 5)) {
                 finalValue = convertedTotalPurchase * 0.8; // 20% discount
             }
 
@@ -40,7 +40,7 @@ public class BusinessLogic {
                 finalValue = convertedTotalPurchase * 0.85; // 15% discount
             }
 
-            else if (convertedLastPurchase < thisYear && convertedLastPurchase > (thisYear - 5)) {
+            else if (convertedLastPurchase < thisYear && convertedLastPurchase >= (thisYear - 5)) {
                 finalValue = convertedTotalPurchase * 0.87; // 13% discount
             }
 

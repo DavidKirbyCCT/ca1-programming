@@ -15,7 +15,7 @@ public class CustomerDiscount {
             mapCustomerData.printDatabase(mapCustomerData.getCustomerDatabase());
 
             String discountData = BusinessLogic.outputFinalCustomerPurchase(mapCustomerData.getCustomerDatabase());
-
+            System.out.println(mapCustomerData.getCustomerDatabase());
             FileReader.CreateExportFile();
             FileReader.writeDatatoFile(discountData);
         } else {
